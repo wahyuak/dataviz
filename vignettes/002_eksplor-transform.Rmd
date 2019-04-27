@@ -19,17 +19,17 @@ Sebelum melakukan pembuatan grafik, Anda harus terlebih dahulu mengetahui inform
 
 ```{r explore-iris1}
 iris # mencetak data di konsol
-dim(iris) # ___
-str(iris) # ___
-colnames(iris) # ___
-head(iris) # ___
-tail(iris) # ___
-summary(iris) # ___
+dim(iris) # Retrieve or set the dimension of an object.
+str(iris) # Compactly Display the Structure of an Arbitrary R Object
+colnames(iris) # Retrieve or set the row or column names of a matrix-like object.
+head(iris) # Return the First or Last Part of an Object
+tail(iris) # Return the First or Last Part of an Object
+summary(iris) # Object Summaries
 iris$Sepal.Length # ekstraksi kolom 'Sepal.Length' dari dataset iris. Jalankan help(`[`) untuk membaca dokumentasi
-class(iris$Species) # ___
-length(iris$Petal.Width) # ___
-levels(iris$Species) # ___
-length(levels(iris$Species)) # ___
+class(iris$Species) # Object Classes
+length(iris$Petal.Width) # Length of an Object
+levels(iris$Species) # Levels Attributes
+length(levels(iris$Species)) # Length of an Object
 unique(iris$Species) # ___
 length(unique(iris$Species)) # ___
 mean(iris$Sepal.Length) # ___
@@ -56,12 +56,13 @@ skim(typical_data)
 Aktivitas pembuatan grafik tidak dapat dilepaskan dari aktivitas transformasi data. Salah satu paket yang umum digunakan untuk melakukan transformasi data adalah dplyr. Sekarang aktifkanlah paket tersebut dengan cara mengganti bagian ___ dengan jawaban yang tepat! (Catatan: jika Anda belum memasang paket dplyr, pasanglah paket tersebut terlebih dahulu melalui menu **Tools -- Install Packages...**)
 
 ```{r load-package}
-library(___)
+library(dplyr)
 ```
 
 Terdapat beberapa fungsi utama dari paket dplyr untuk melakukan transformasi data, diantaranya:
 
 * `select()`
+?select
 * `filter()`
 * `arrange()`
 * `mutate()`
