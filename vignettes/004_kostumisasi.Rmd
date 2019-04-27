@@ -23,9 +23,9 @@ household_access
 Selanjutnya Anda diminta untuk mengaktifkan paket ggplot2, magick, dan grid. Isilah bagian ___ dengan jawaban yang tepat!
 
 ```{r load-package}
-library(___)
-library(___)
-library(___)
+library(ggplot2)
+library(magick)
+library(grid)
 ```
 
 Dengan menggunakan dataset household_access, buatlah *scatterplot* dengan nama plot_household berdasarkan kriteria berikut:
@@ -38,8 +38,8 @@ Dengan menggunakan dataset household_access, buatlah *scatterplot* dengan nama p
 ```{r plot-household1}
 plot_household <- 
   household_access %>% 
-  ggplot(aes(x = ___, y = ___, size = ___, colour = ___)) +
-  geom____()
+  ggplot(aes(x = electricity_total, y = safe_sanitation, size = safe_water, colour = year)) +
+  geom_point()
 plot_household
 ```
 
@@ -48,12 +48,12 @@ Pada grafik tersebut nampak banyak titik-titik observasi yang menumpuk. Perbakil
 ```{r plot-household2}
 plot_household <- 
   plot_household +
-  geom_point(alpha = ___) +
-  scale_colour_manual(values = c("___",
-                                 "___",
-                                 "___",
-                                 "___",
-                                 "___"))
+  geom_point(alpha = 0.3) +
+  scale_colour_manual(values = c("#162c4f",
+                                 "#2c89a0",
+                                 "#37c871",
+                                 "#b3b3b3",
+                                 "#2c62a0"))
 plot_household
 ```
 
@@ -62,8 +62,8 @@ Sekarang grafik tersebut nampak lebih baik dengan diperbaikinya titik-titik data
 ```{r plot-household3}
 plot_household <- 
   plot_household +
-  guides(size = guide_legend(reverse = ___, order = 1),
-         colour = guide_legend(reverse = ___, order = 2 ))
+  guides(size = guide_legend(reverse = TRUE, order = 1),
+         colour = guide_legend(reverse = TRUE, order = 2 ))
 plot_household
 ```
 
@@ -73,13 +73,13 @@ Selanjutnya Anda diminta untuk mengganti judul, subjudul, label sumbu x dan y, j
 plot_household <- 
   plot_household +
   labs(
-    title = "___",
-    subtitle = "___",
+    title = "judul",
+    subtitle = "sub judul",
     caption = "Author: your_name \n Contact: your_email \n Data source: The World Bank, 2019",
-    x = "___",
-    y = "___",
-    colour = "___",
-    size = "___"
+    x = "akses listrik",
+    y = "akses air",
+    colour = "year",
+    size = "air jernih"
   )
 plot_household
 ```
@@ -93,7 +93,7 @@ plot_household <-
   theme(
     text = element_text(family = "Lato"),
     plot.title = element_text(face = "bold", size = 18),
-    legend.position = "___"
+    legend.position = "top"
   )
 plot_household
 ```
@@ -117,13 +117,15 @@ grid::grid.raster(logo, x = 0.0, y = 0.0, just = c('left', 'bottom'), height = u
 Tuliskan kembali baris kode pada *chunk* di atas namun gantilah alamat berkas logo menjadi "../data-raw/telkom-university.png"!
 
 ```{r brand-plot_household2}
-
+logo <- image_read("../data-raw/telkom-university.png") # berkas logo dengan format png atau jpg
+plot_household
+grid::grid.raster(logo, x = 0.0, y = 0.0, just = c('left', 'bottom'), height = unit(0.5, 'inches'))
 ```
 
 Selain dengan menggunakan *preset theme* dari ggplot2 atau meracik tema sendiri, Anda juga dapat menggunakan paket-paket R yang menyediakan tema untuk ggplo2. Diantaranya adalah paket hrbrthemes ggpubr dan paket ggthemr. Pada modul selanjutnya Anda akan belajar menggunakan salahsatu tema dari paket tersebut. Namun sebelumnya, dapatkah Anda menambahkan baris kode `facet_warp(~year)` pada plot_household? Apakah yang akan terjadi pada grafik tersebut?
 
 ```{r facet-plot_household}
 plot_household +
-  ___
+facet_wrap(~year)
 ```
 
